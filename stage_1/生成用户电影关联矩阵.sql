@@ -1,3 +1,5 @@
+--执行时间：1:57
+
 use movielen
 --创建三个表格:PID2Usrid,MID2Movieid,Usr_Movie
 create table PID2Usrid(
@@ -54,6 +56,8 @@ deallocate my_curs
 
 
 --用户电影关联矩阵
+/*
+--太慢以至于不能使用游标（400行/秒）
 --declare @usrid int
 --declare @movieId int
 declare @PID int
@@ -78,4 +82,15 @@ while @@FETCH_STATUS = 0
 		fetch next from my_curs into @usrid, @movieId, @rating
 	end
 close my_curs
-deallocate my_curs
+deallocate my_curs*/
+
+
+--用户电影关联矩阵
+insert into Usr_Movie
+select T.PID, T.MID ,T.rating
+from 
+(select dbo.MID2Movieid.MID,dbo.PID2Usrid.PID, dbo.Ratings.rating
+from dbo.Ratings,dbo.MID2Movieid,dbo.PID2Usrid
+where dbo.Ratings.movieId = dbo.MID2Movieid.movieid
+and dbo.Ratings.userId = dbo.PID2Usrid.usrid
+) as T
