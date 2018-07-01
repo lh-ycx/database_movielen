@@ -26,4 +26,4 @@ with movie_genres as (
   where sta != 0)
 
 select movieId, substring(genres, sta - lens, lens) as genre into movie_genre  from movie_genres
-where sta != 0 order by movieId ;
+where sta != 0 and lens != 0 order by movieId ;
