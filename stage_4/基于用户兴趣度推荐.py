@@ -54,7 +54,7 @@ if __name__ == '__main__':
                                 "group by genre order by avg_rating desc")
     
 
-    #推荐他还没看过的这种类型的高分电影，每一种类推荐前三个
+    #推荐他还没看过的这种类型的高分电影，每一种类推荐前5个
     if reslist :
         #print(reslist)
         for row in reslist:
