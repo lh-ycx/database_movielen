@@ -1,7 +1,7 @@
---Ö´ĞĞÊ±¼ä£º1:57
+--æ‰§è¡Œæ—¶é—´ï¼š1:57
 
 use movielen
---´´½¨Èı¸ö±í¸ñ:PID2Usrid,MID2Movieid,Usr_Movie
+--åˆ›å»ºä¸‰ä¸ªè¡¨æ ¼:PID2Usrid,MID2Movieid,Usr_Movie
 create table PID2Usrid(
 	PID int,
 	usrid int
@@ -17,7 +17,7 @@ create table Usr_Movie(
 )
 
 
---Îªusrid·ÖÅäÁ¬ĞøµÄÎ¨Ò»±êÊ¶UID
+--ä¸ºusridåˆ†é…è¿ç»­çš„å”¯ä¸€æ ‡è¯†UID
 declare @i int
 declare @usrid int
 set @i = 1
@@ -36,7 +36,7 @@ while @@FETCH_STATUS = 0
 close my_curs
 deallocate my_curs
 
---Îªmovieid·ÖÅäÁ¬ĞøµÄÎ¨Ò»±êÊ¶MID
+--ä¸ºmovieidåˆ†é…è¿ç»­çš„å”¯ä¸€æ ‡è¯†MID
 declare @movieid int
 set @i = 1
 declare my_curs cursor for
@@ -55,9 +55,9 @@ close my_curs
 deallocate my_curs
 
 
---ÓÃ»§µçÓ°¹ØÁª¾ØÕó
+--ç”¨æˆ·ç”µå½±å…³è”çŸ©é˜µ
 /*
---Ì«ÂıÒÔÖÁÓÚ²»ÄÜÊ¹ÓÃÓÎ±ê£¨400ĞĞ/Ãë£©
+--å¤ªæ…¢ä»¥è‡³äºä¸èƒ½ä½¿ç”¨æ¸¸æ ‡ï¼ˆ400è¡Œ/ç§’ï¼‰
 --declare @usrid int
 --declare @movieId int
 declare @PID int
@@ -85,7 +85,7 @@ close my_curs
 deallocate my_curs*/
 
 
---ÓÃ»§µçÓ°¹ØÁª¾ØÕó
+--ç”¨æˆ·ç”µå½±å…³è”çŸ©é˜µ
 insert into Usr_Movie
 select T.PID, T.MID ,T.rating
 from 

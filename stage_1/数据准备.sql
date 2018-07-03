@@ -27,3 +27,10 @@ with movie_genres as (
 
 select movieId, substring(genres, sta - lens, lens) as genre into movie_genre  from movie_genres
 where sta != 0 and lens != 0 order by movieId ;
+
+--将tags和ratings中的timestamp转成数据库里面的日期
+alter table dbo.Tags add newtime varchar(20)
+update dbo.Tags set newtime = DATEADD(s, timestamp+8*3600, '1970-01-01 00:00:00')
+
+alter table dbo.Ratings add newtime varchar(20)
+update dbo.Ratings set newtime = DATEADD(s, timestamp+8*3600, '1970-01-01 00:00:00')
